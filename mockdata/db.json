@@ -1,0 +1,37 @@
+{
+    "ApplicationName":"Patient portal",
+    "specializations": [
+        {
+            "id": 1,
+            "department": "Cardiology"
+        },
+        {
+            "id": 2,
+            "department": "Nuerology"
+        },
+        {
+            "id": 3,
+            "department": "Nephrology"
+        },
+        {
+            "id": 4,
+            "department": "ENT"
+        },
+        {
+            "id": 5,
+            "department": "EYE"
+        },
+        {
+            "id": 6,
+            "department": "Dermitology"
+        },
+        {
+            "id": 7,
+            "department": "Dentist"
+        },
+        {
+            "id": 7,
+            "department": "Orthopedic"
+        }
+    ]
+}
