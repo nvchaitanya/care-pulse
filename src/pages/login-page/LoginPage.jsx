@@ -14,6 +14,9 @@ const LoginPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userState = useSelector(state => state.loginState);
+    useEffect(() => {
+        console.log("Users data ==>", userState);
+    }, [])
     const [form, setForm] = useState({
         userId: "",
         password: ""
@@ -32,6 +35,9 @@ const LoginPage = () => {
         }
         else if (enteredUser.password !== password) {
             return errors["mismatch"];
+        }
+        if (enteredUser.role !== role) {
+            return errors["invalidrole"]
         }
     }
     const [isRegistered, setIsRegistered] = useState(true);

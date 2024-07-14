@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             <Header />
-            <div style={{display:"flex"}}>
+            <div style={{ display: "flex" }}>
                 <Leftnav />
                 <Outlet />
             </div>

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import LoginPage from "./pages/login-page/LoginPage";
 import PrivateRoutes from "./route-handlers/PrivateRoutes";
 import PatientDemographics from "./components/patient-demographics/PatientDemographics";
+import ScheduleAppointment from "./components/schedule-appointment/ScheduleAppointment";
 
 
 const MainContainer = () => {
@@ -18,6 +19,7 @@ const MainContainer = () => {
             <Route element={<PrivateRoutes isLogged={loginState?.isLogged} />}>
                 <Route path="/" element={<HomePage />} >
                     <Route path="demo-graphics" element={<PatientDemographics/>}/>
+                    <Route path="schedule-appointment" element={<ScheduleAppointment/>}/>
                 </Route>
             </Route>
         </Routes>

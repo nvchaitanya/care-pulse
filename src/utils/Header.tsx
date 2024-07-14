@@ -60,8 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Header = () =>  {
-  const [open, setOpen]:[any,any] = React.useState(false);
+const Header = () => {
+  const [open, setOpen]: [any, any] = React.useState(false);
   const dispatch = useDispatch();
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -97,27 +97,27 @@ const Header = () =>  {
   }
 
   const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-      onChange={changeMenu}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={()=>dispatch(loginAction.logout())}>Logout <LogoutIcon sx={{marginLeft: '5px', fontSize: '16px'}} /></MenuItem>
-    </Menu>
-  );
+  // const renderMenu = (
+  //   <Menu
+  //     anchorEl={anchorEl}
+  //     anchorOrigin={{
+  //       vertical: 'top',
+  //       horizontal: 'right',
+  //     }}
+  //     id={menuId}
+  //     keepMounted
+  //     transformOrigin={{
+  //       vertical: 'top',
+  //       horizontal: 'right',
+  //     }}
+  //     open={isMenuOpen}
+  //     onClose={handleMenuClose}
+  //     onChange={changeMenu}
+  //   >
+  //     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+  //     <MenuItem onClick={()=>dispatch(loginAction.logout())}>Logout <LogoutIcon sx={{marginLeft: '5px', fontSize: '16px'}} /></MenuItem>
+  //   </Menu>
+  // );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -203,21 +203,7 @@ const Header = () =>  {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+          {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
               size="large"
               edge="end"
@@ -229,7 +215,9 @@ const Header = () =>  {
             >
               <AccountCircle />
             </IconButton>
-          </Box>
+          </Box> */}
+          <Typography onClick={() => dispatch(loginAction.logout())}>Logout <LogoutIcon sx={{ marginLeft: '5px', fontSize: '20px' }} /></Typography>
+
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -246,7 +234,7 @@ const Header = () =>  {
       </AppBar>
       {/* <Leftnav /> */}
       {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMenu} */}
     </Box>
   );
 }

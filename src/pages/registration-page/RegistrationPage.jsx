@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { RegistrationWrapper } from './RegistrationPage.styles';
-import { loginAction } from '../../redux/login-flow/LoginRedux';
+import { addUser, loginAction } from '../../redux/login-flow/LoginRedux';
 import { useSelector, useDispatch } from 'react-redux';
 import "./RegistrationPage.scss";
 import { InputWrapper } from '../../utils/Form.styles';
+import { getCategories } from '../../redux/login-flow/CategoriesRedux';
+import SnackbarComponent from '../../utils/SnackbarComponent';
 
 const RegistrationPage = ({ setIsRegistered }) => {
     const dispatch = useDispatch()
-    const reduxState = useSelector(state => state)
+    const [showSnackBar, setShowSnackBar] = useState(false);
+    const categories = useSelector(state => state.categoriesState)
     const [user, setUser] = useState({
         firstname: '',
         lastname: '',
@@ -19,6 +22,7 @@ const RegistrationPage = ({ setIsRegistered }) => {
         dob: '',
         mobile: '',
         role: "",
+        specialization: "",
         isRegistered: false,
         specilization: null,
         otherSpecilization: null,
@@ -27,9 +31,10 @@ const RegistrationPage = ({ setIsRegistered }) => {
         lookupData: [],
         isOthersSelected: false,
         isChecked: false,
-        usersData: []
+        usersData: [],
     });
-    const { firstname, lastname, gender, email, password, reenterPassword, dob, mobile, role } = user
+    const [isPhysician, setIsPhysician] = useState(false);
+    const { firstname, lastname, gender, email, password, reenterPassword, dob, mobile, role, specialization } = user
     const [isSubmitClicked, setIsSubmitClicked] = useState(false)
 
     const handleChange = (e) => {
@@ -37,7 +42,16 @@ const RegistrationPage = ({ setIsRegistered }) => {
             ...user,
             [e.target.name]: e.target.value
         })
+        if (e.target.name === "role" && e.target.value === "physician") {
+            setIsPhysician(true);
+        }
     };
+
+    useEffect(() => {
+        if (isPhysician) {
+            dispatch(getCategories())
+        }
+    }, [isPhysician])
 
     const isValid = () => {
         console.log(password, reenterPassword)
@@ -55,7 +69,8 @@ const RegistrationPage = ({ setIsRegistered }) => {
         password,
         dob,
         mobile,
-        role
+        role,
+        specialization
     }
     const createUserId = (email) => {
         reqBody["userId"] = email.split("@")[0]
@@ -65,14 +80,16 @@ const RegistrationPage = ({ setIsRegistered }) => {
         setIsSubmitClicked(true)
         if (isValid()) {
             createUserId(reqBody.email)
-            dispatch(loginAction.register(reqBody))
+            dispatch(addUser(reqBody))
             setIsRegistered(true)
+            setShowSnackBar(true)
         }
 
     }
 
     return (
         <RegistrationWrapper onSubmit={registerUser}>
+            {/* <button onClick={()=>{dispatch(loginAction.deleteUser())}}>Delete User</button> */}
             <InputWrapper>
                 <TextField fullWidth error={isSubmitClicked && !user.firstname} helperText={isSubmitClicked && !user.firstname ? "Enter First name" : ""} type="text" name="firstname" value={user.firstname} placeholder="Enter First Name" label="First Name" onChange={handleChange} />
             </InputWrapper>
@@ -108,12 +125,32 @@ const RegistrationPage = ({ setIsRegistered }) => {
                     <MenuItem value="physician">Physician</MenuItem>
                 </Select>
             </FormControl>
+            {isPhysician &&
+                <FormControl fullWidth>
+                    <InputLabel id="gender-label">Specialization</InputLabel>
+                    <Select
+                        labelId="gender-label"
+                        error={isSubmitClicked && !user.role}
+                        name="specialization"
+                        helperText={isSubmitClicked && !user.role ? "Select role" : ""}
+                        value={user.specialization}
+                        label="Role"
+                        placeholder='Select your Specialization'
+                        onChange={handleChange}
+                    >
+                        {categories?.categoriesList?.map((ele) => (
+                            <MenuItem key={ele?.id} value={ele?.department}>{ele.department}</MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            }
             <TextField type="email" name="email" helperText={isSubmitClicked && !user.email ? "Enter email address" : ""} error={isSubmitClicked && !user.email} value={user.email} placeholder="Enter Email" label="Email" onChange={handleChange} />
             <TextField type="date" name="dob" value={user.dob} error={isSubmitClicked && !user.dob} placeholder="En0ter Date of Birth" label="" onChange={handleChange} className='full-width' />
             <TextField type="mobile" name="mobile" error={isSubmitClicked && !user.mobile} value={user.mobile} placeholder="Enter Mobile Number" label="Mobile" onChange={handleChange} />
             <TextField type="password" name="password" helperText={isSubmitClicked && !user.password ? "Enter password" : ""} error={isSubmitClicked && !user.password} value={user.password} placeholder="Enter password" label="password" onChange={handleChange} />
             <TextField type="text" name="reenterPassword" error={isSubmitClicked && !user.reenterPassword} value={user.reenterPassword} placeholder="Reenter Password" label="Reenter Password" onChange={handleChange} />
             <Button type="submit">Register</Button>
+            <SnackbarComponent showSnackBar={showSnackBar} setShowSnackBar={setShowSnackBar} snackMessage="User added successfully" />
         </RegistrationWrapper>
     )
 };
