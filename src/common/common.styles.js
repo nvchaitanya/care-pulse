@@ -9,3 +9,8 @@ export const FormWrapper = styled.form`
     width:100%;
     padding:${props=>props.px};
 `
+
+export const HelperText = styled.span`
+    font-size:12px;
+    color:red;
+`

@@ -4,7 +4,6 @@ import Leftnav from "../../utils/Leftnav.tsx"
 import Footer from '../../utils/Footer.tsx';
 
 const Home = () => {
-    const { state } = useLocation()
     return (
         <>
             <Header />

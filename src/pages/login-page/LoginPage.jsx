@@ -14,9 +14,6 @@ const LoginPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userState = useSelector(state => state.loginState);
-    useEffect(() => {
-        console.log("Users data ==>", userState);
-    }, [])
     const [form, setForm] = useState({
         userId: "",
         password: ""
@@ -53,10 +50,12 @@ const LoginPage = () => {
         e.preventDefault();
         const error = errorValidation();
         console.log(error);
+        const { userList } = userState;
+        const enteredUser = userList.find(ele => ele.userId === userId)
         if (!error) {
             dispatch(loginAction.login())
+            dispatch(loginAction.getLoggedInUser({ name: enteredUser.displayName }))
             navigate("/", { state: { userId: userId } })
-
         } else {
             alert(error)
         }
