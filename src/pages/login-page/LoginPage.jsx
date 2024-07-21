@@ -33,6 +33,9 @@ const LoginPage = () => {
         else if (enteredUser.password !== password) {
             return errors["mismatch"];
         }
+        if (enteredUser.role !== role) {
+            return errors["invalidrole"]
+        }
     }
     const [isRegistered, setIsRegistered] = useState(true);
     const { userId, password } = form
@@ -47,10 +50,12 @@ const LoginPage = () => {
         e.preventDefault();
         const error = errorValidation();
         console.log(error);
+        const { userList } = userState;
+        const enteredUser = userList.find(ele => ele.userId === userId)
         if (!error) {
             dispatch(loginAction.login())
+            dispatch(loginAction.getLoggedInUser({ name: enteredUser.displayName }))
             navigate("/", { state: { userId: userId } })
-
         } else {
             alert(error)
         }
