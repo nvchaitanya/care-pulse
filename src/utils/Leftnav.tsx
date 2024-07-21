@@ -13,25 +13,25 @@ import { useNavigate } from 'react-router-dom';
 const drawerWidth = 250;
 const modules = [
   {
-    route: "demo-graphics",
+    route: "patient-demographics",
     name: "Patient Demographics"
   },
   {
-    route: "medication-allergies",
+    route: "patient-medication",
     name: "Patient Medication and Allergies"
   },
   {
-    route: "immunization-details",
+    route: "patient-immunization",
     name: "Patient Immunization details"
   },
   {
     route: "schedule-appointment",
     name: "Schedule Appointement"
   },
-  {
-    route: "vitals",
-    name: "Patient Vitals"
-  },
+  // {
+  //   route: "patient-vitals",
+  //   name: "Patient Vitals"
+  // },
 ]
 const personalModules = [
   {

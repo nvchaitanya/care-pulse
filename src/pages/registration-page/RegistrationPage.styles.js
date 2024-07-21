@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 export const RegistrationWrapper = styled.form`
     display: flex;
-    flex-direction: column;
+    flex-wrap:wrap;
     align-items: center;
+    justify-content:center;
     row-gap: 10px;
+    overflow-y:auto;
 `
