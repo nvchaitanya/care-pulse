@@ -64,6 +64,7 @@ const RegistrationPage = ({ setIsRegistered }) => {
 
     const reqBody = {
         name: `${firstname} ${lastname}`,
+        displayName: firstname,
         gender: gender,
         email,
         password,

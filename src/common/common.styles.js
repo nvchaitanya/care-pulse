@@ -15,3 +15,8 @@ export const DashboardWrapper = styled.div`
     text-align: center;
     padding: 10px 20px;
 `
+
+export const HelperText = styled.span`
+    font-size:12px;
+    color:red; 
+`

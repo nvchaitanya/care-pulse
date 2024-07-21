@@ -1,12 +1,12 @@
 import { Alert, Snackbar } from "@mui/material";
 import React from "react";
 
-const SnackbarComponent = ({ showSnackBar, setShowSnackBar,snackMessage }) => {
+const SnackbarComponent = ({ showSnackBar, setShowSnackBar, snackMessage, status }) => {
     return (
         <Snackbar open={showSnackBar} autoHideDuration={6000} onClose={() => setShowSnackBar(false)}>
             <Alert
                 onClose={() => setShowSnackBar(false)}
-                severity="success"
+                severity={status}
                 variant="filled"
                 sx={{ width: '100%' }}
             >
