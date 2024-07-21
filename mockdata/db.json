@@ -1,98 +1,188 @@
 {
-  "ApplicationName": "Patient portal",
-  "users": [
-    {
-      "id": "a4ab",
-      "name": "Venkata Srivatsava Nistala",
-      "gender": "male",
-      "email": "venkatasrinu3@gmail.com",
-      "password": "Chathan2569@",
-      "dob": "1999-03-18",
-      "mobile": "7997011244",
-      "role": "patient",
-      "userId": "venkatasrinu3"
-    },
-    {
-      "id": "da70",
-      "name": "Venkata Sarath Jayanthi",
-      "gender": "male",
-      "email": "venkatasarath@gmail.com",
-      "password": "Chathan2569",
-      "dob": "2024-07-01",
-      "mobile": "8309212273",
-      "role": "patient",
-      "userId": "venkatasarath"
-    },
-    {
-      "id": "c97c",
-      "name": "Venkata Srivatsava Nistala",
-      "gender": "male",
-      "email": "venkatasrinu3@gmail.com",
-      "password": "Chathan2569",
-      "dob": "2024-07-01",
-      "mobile": "7997011244",
-      "role": "patient",
-      "userId": "venkatasrinu3"
-    },
-    {
-      "id": "ba9d",
-      "name": "Dr. Arvind Das",
-      "gender": "male",
-      "email": "aravinddas@gmail.com",
-      "password": "Vatsava123@",
-      "dob": "1963-06-23",
-      "mobile": "7997011244",
-      "role": "physician",
-      "pet": "tommy",
-      "specialization": "Cardiology",
-      "userId": "aravinddas"
-    },
-    {
-      "id": "ba9d",
-      "name": "Ayyappa gupta",
-      "gender": "male",
-      "email": "aravinddas@gmail.com",
-      "password": "Vatsava123@",
-      "dob": "1963-06-23",
-      "mobile": "7997011244",
-      "role": "physician",
-      "pet": "tommy",
-      "specialization": "ENT",
-      "userId": "aravinddas"
-    }
-  ],
-  "specializations": [
-    {
-      "id": "1",
-      "department": "Cardiology"
-    },
-    {
-      "id": "2",
-      "department": "Nuerology"
-    },
-    {
-      "id": "3",
-      "department": "Nephrology"
-    },
-    {
-      "id": "4",
-      "department": "ENT"
-    },
-    {
-      "id": "5",
-      "department": "EYE"
-    },
-    {
-      "id": "6",
-      "department": "Dermitology"
-    },
-    {
-      "id": "7",
-      "department": "Dentist"
-    },
-    {
-      "id": "8",
-      "department": "Orthopedic"
-    }
-  ]
+    "ApplicationName": "Patient portal",
+    "users": [
+        {
+            "id": "a4ab",
+            "name": "Venkata Srivatsava Nistala",
+            "gender": "male",
+            "email": "venkatasrinu3@gmail.com",
+            "password": "Chathan2569@",
+            "dob": "1999-03-18",
+            "mobile": "7997011244",
+            "role": "patient",
+            "userId": "venkatasrinu3"
+        },
+        {
+            "id": "da70",
+            "name": "Venkata Sarath Jayanthi",
+            "gender": "male",
+            "email": "venkatasarath@gmail.com",
+            "password": "Chathan2569",
+            "dob": "2024-07-01",
+            "mobile": "8309212273",
+            "role": "patient",
+            "userId": "venkatasarath"
+        },
+        {
+            "id": "c97c",
+            "name": "Venkata Srivatsava Nistala",
+            "gender": "male",
+            "email": "venkatasrinu3@gmail.com",
+            "password": "Chathan2569",
+            "dob": "2024-07-01",
+            "mobile": "7997011244",
+            "role": "patient",
+            "userId": "venkatasrinu3"
+        },
+        {
+            "id": "ba9d",
+            "name": "Dr. Arvind Das",
+            "gender": "male",
+            "email": "aravinddas@gmail.com",
+            "password": "Vatsava123@",
+            "dob": "1963-06-23",
+            "mobile": "7997011244",
+            "role": "physician",
+            "pet": "tommy",
+            "specialization": "Cardiology",
+            "userId": "aravinddas"
+        },
+        {
+            "id": "ba9d",
+            "name": "Ayyappa gupta",
+            "gender": "male",
+            "email": "aravinddas@gmail.com",
+            "password": "Vatsava123@",
+            "dob": "1963-06-23",
+            "mobile": "7997011244",
+            "role": "physician",
+            "pet": "tommy",
+            "specialization": "ENT",
+            "userId": "aravinddas"
+        }
+    ],
+    "specializations": [
+        {
+            "id": "1",
+            "department": "Cardiology"
+        },
+        {
+            "id": "2",
+            "department": "Nuerology"
+        },
+        {
+            "id": "3",
+            "department": "Nephrology"
+        },
+        {
+            "id": "4",
+            "department": "ENT"
+        },
+        {
+            "id": "5",
+            "department": "EYE"
+        },
+        {
+            "id": "6",
+            "department": "Dermitology"
+        },
+        {
+            "id": "7",
+            "department": "Dentist"
+        },
+        {
+            "id": "8",
+            "department": "Orthopedic"
+        }
+    ],
+    "appointments": [
+        {
+            "id": "1",
+            "patientName": "Chathan",
+            "appointmentType": "online",
+            "physician": "Rahul",
+            "appointmentDate": "25/08/1991",
+            "appointmentTime": "11:30",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        },
+        {
+            "id": "2",
+            "patientName": "Raju",
+            "appointmentType": "offline",
+            "physician": "Rahul",
+            "appointmentDate": "30/12/2012",
+            "appointmentTime": "17:20",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        },
+        {
+            "id": "3",
+            "patientName": "Sowmya",
+            "appointmentType": "offline",
+            "physician": "Rahul",
+            "appointmentDate": "13/09/1992",
+            "appointmentTime": "14:30",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        },
+        {
+            "id": "4",
+            "patientName": "Nistala",
+            "appointmentType": "online",
+            "physician": "Rahul",
+            "appointmentDate": "",
+            "appointmentTime": "",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        },
+        {
+            "id": "5",
+            "patientName": "Chaitanya",
+            "appointmentType": "offline",
+            "physician": "Rahul",
+            "appointmentDate": "",
+            "appointmentTime": "",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        },
+        {
+            "id": "6",
+            "patientName": "Sarath",
+            "appointmentType": "online",
+            "physician": "Rahul",
+            "appointmentDate": "",
+            "appointmentTime": "",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Done"
+        },
+        {
+            "id": "7",
+            "patientName": "Ramu",
+            "appointmentType": "online",
+            "physician": "Rahul",
+            "appointmentDate": "",
+            "appointmentTime": "",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        },
+        {
+            "id": "8",
+            "patientName": "Samuel",
+            "appointmentType": "offline",
+            "physician": "Rahul",
+            "appointmentDate": "",
+            "appointmentTime": "",
+            "attendingPhysician": "Rahul",
+            "referringPhyscian": "NA",
+            "consultationStatus": "Pending"
+        }
+    ]
 }

@@ -50,14 +50,14 @@ export default function PermanentDrawerLeft() {
     navigate(module.route)
   }
   return (
-    <Box sx={{ display: 'flex', minHeight: "calc(100vh - 128px)",width:"fit-content", }}>
+    <Box sx={{ display: 'flex', minHeight: "calc(100vh - 128px)", width: "fit-content", }}>
       <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
-            position: "relative",
+            position: "relative"
           },
         }}
         variant="permanent"
