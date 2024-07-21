@@ -1,5 +1,5 @@
 {
-  "ApplicationName": "Patient portal",
+  "ApplicationName": "Care-Pulse",
   "users": [
     {
       "id": "a4ab",
@@ -35,7 +35,6 @@
       "dob": "1963-06-23",
       "mobile": "7997011244",
       "role": "physician",
-      "pet": "tommy",
       "specialization": "Cardiology",
       "userId": "aravinddas"
     },
@@ -49,7 +48,6 @@
       "dob": "1963-06-23",
       "mobile": "7997011244",
       "role": "physician",
-      "pet": "tommy",
       "specialization": "ENT",
       "userId": "aravinddas"
     },
@@ -67,38 +65,184 @@
       "userId": "chathan2569"
     }
   ],
+  "patientDemographics": [
+    {
+      "id": 1,
+      "medicalHistory": "",
+      "familyMedicalHistory": "",
+      "surgeries": "",
+      "insuranceProvider": null
+    }
+  ],
+  "patientImmunization": [
+    {
+      "id": 1,
+      "COVID-19Vaccine": "",
+      "dose": "",
+      "VaccineDate": "",
+      "otherVaccnes": ""
+    }
+  ],
+  "medicationAndAllergies": [
+    {
+      "id": 1,
+      "currentMedication": "Need to enter by Physician",
+      "OTC": "",
+      "healthProducts": "",
+      "socialDrugs": "",
+      "pastMedication": "",
+      "drugs": "",
+      "allergiesReaction": ""
+    }
+  ],
   "specializations": [
     {
       "id": "1",
-      "department": "Cardiology"
+      "department": "Anatomical Pathology"
     },
     {
       "id": "2",
-      "department": "Nuerology"
+      "department": "Anesthesiology"
     },
     {
       "id": "3",
-      "department": "Nephrology"
+      "department": "Cardiology"
     },
     {
       "id": "4",
-      "department": "ENT"
+      "department": "Cardiovascular/Thoracic Surgery"
     },
     {
       "id": "5",
-      "department": "EYE"
+      "department": "Clinical Immunology/Allergy"
     },
     {
       "id": "6",
-      "department": "Dermitology"
+      "department": "Critical Care Medicine"
     },
     {
       "id": "7",
-      "department": "Dentist"
+      "department": "Dermatology"
     },
     {
       "id": "8",
-      "department": "Orthopedic"
+      "department": "Diagnostic Radiology"
+    },
+    {
+      "id": "9",
+      "department": "Emergency Medicine"
+    },
+    {
+      "id": "10",
+      "department": "Endocrinology and Metabolism"
+    },
+    {
+      "id": "11",
+      "department": "Gastroenterology"
+    },
+    {
+      "id": "12",
+      "department": "General Internal Medicine"
+    },
+    {
+      "id": "13",
+      "department": "General/Clinical Pathology"
+    },
+    {
+      "id": "14",
+      "department": "General Surgery"
+    },
+    {
+      "id": "15",
+      "department": "Geriatric Medicine"
+    },
+    {
+      "id": "16",
+      "department": "Hematology"
+    },
+    {
+      "id": "17",
+      "department": "Medical Biochemistry"
+    },
+    {
+      "id": "18",
+      "department": "Medical Genetics"
+    },
+    {
+      "id": "19",
+      "department": "Medical Microbiology and Infectious Diseases"
+    },
+    {
+      "id": "20",
+      "department": "Medical Oncology"
+    },
+    {
+      "id": "21",
+      "department": "Nephrology"
+    },
+    {
+      "id": "22",
+      "department": "Neurology"
+    },
+    {
+      "id": "23",
+      "department": "Neurosurgery"
+    },
+    {
+      "id": "24",
+      "department": "Nuclear Medicine"
+    },
+    {
+      "id": "25",
+      "department": "Obstetrics/Gynecology"
+    },
+    {
+      "id": "26",
+      "department": "Occupational Medicine"
+    },
+    {
+      "id": "27",
+      "department": "Ophthalmology"
+    },
+    {
+      "id": "28",
+      "department": "Orthopedic Surgery"
+    },
+    {
+      "id": "29",
+      "department": "Otolaryngology"
+    },
+    {
+      "id": "30",
+      "department": "Pediatrics"
+    },
+    {
+      "id": "31",
+      "department": "Physical Medicine and Rehabilitation (PM & R)"
+    },
+    {
+      "id": "32",
+      "department": "Plastic Surgery"
+    },
+    {
+      "id": "33",
+      "department": "Psychiatry"
+    },
+    {
+      "id": "34",
+      "department": "Rheumatology"
+    },
+    {
+      "id": "35",
+      "department": "Respirology"
+    },
+    {
+      "id": "36",
+      "department": "Radiation Oncology"
+    },
+    {
+      "id": "37",
+      "department": "Public Health and Preventive Medicine (PhPm)"
     }
   ],
   "appointments": [
