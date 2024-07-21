@@ -111,8 +111,6 @@ function ScheduleAppointment() {
     }
   }
 
-
-
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className='appointment-wrapper'>
