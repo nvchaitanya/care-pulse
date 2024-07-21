@@ -85,50 +85,34 @@ const PhysicianDashboard = () => {
     const items = [
         {
             id: 1,
-            numeric: false,
-            disablePadding: true,
             label: 'Patient Name',
         },
         {
             id: 2,
-            numeric: true,
-            disablePadding: false,
             label: 'Appointment Date Time',
         },
         {
             id: 3,
-            numeric: true,
-            disablePadding: false,
             label: 'Appointment Type',
         },
         {
             id: 4,
-            numeric: true,
-            disablePadding: false,
             label: 'Attending Physician',
         },
         {
             id: 5,
-            numeric: true,
-            disablePadding: false,
             label: 'Referring Physician',
         },
         {
             id: 6,
-            numeric: true,
-            disablePadding: false,
             label: 'Status',
         },
         {
             id: 7,
-            numeric: true,
-            disablePadding: false,
             label: 'Modify',
         },
         {
             id: 8,
-            numeric: true,
-            disablePadding: false,
             label: 'Delete',
         },
     ];
