@@ -7,6 +7,7 @@ import "./RegistrationPage.scss";
 import { InputWrapper } from '../../utils/Form.styles';
 import { getCategories } from '../../redux/login-flow/CategoriesRedux';
 import SnackbarComponent from '../../utils/SnackbarComponent';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 const RegistrationPage = ({ setIsRegistered }) => {
     const dispatch = useDispatch()
@@ -148,12 +149,12 @@ const RegistrationPage = ({ setIsRegistered }) => {
                     </Select>
                 </FormControl>
             }
-            <TextField type="email" name="email" helperText={isSubmitClicked && !user.email ? "Enter email address" : ""} error={isSubmitClicked && !user.email} value={user.email} placeholder="Enter Email" label="Email" onChange={handleChange} />
+            <TextField type="email" name="email" fullWidth helperText={isSubmitClicked && !user.email ? "Enter email address" : ""} error={isSubmitClicked && !user.email} value={user.email} placeholder="Enter Email" label="Email" onChange={handleChange} />
             <TextField type="date" name="dob" value={user.dob} error={isSubmitClicked && !user.dob} placeholder="En0ter Date of Birth" label="" onChange={handleChange} className='full-width' />
-            <TextField type="mobile" name="mobile" error={isSubmitClicked && !user.mobile} value={user.mobile} placeholder="Enter Mobile Number" label="Mobile" onChange={handleChange} />
-            <TextField type="password" name="password" helperText={isSubmitClicked && !user.password ? "Enter password" : ""} error={isSubmitClicked && !user.password} value={user.password} placeholder="Enter password" label="password" onChange={handleChange} />
-            <TextField type="text" name="reenterPassword" error={isSubmitClicked && !user.reenterPassword} value={user.reenterPassword} placeholder="Reenter Password" label="Reenter Password" onChange={handleChange} />
-            <Button type="submit">Register</Button>
+            <TextField type="mobile" name="mobile" fullWidth error={isSubmitClicked && !user.mobile} value={user.mobile} placeholder="Enter Mobile Number" label="Mobile" onChange={handleChange} />
+            <TextField type="password" name="password" fullWidth helperText={isSubmitClicked && !user.password ? "Enter password" : ""} error={isSubmitClicked && !user.password} value={user.password} placeholder="Enter password" label="password" onChange={handleChange} />
+            <TextField type="text" name="reenterPassword" fullWidth error={isSubmitClicked && !user.reenterPassword} value={user.reenterPassword} placeholder="Reenter Password" label="Reenter Password" onChange={handleChange} />
+            <Button endIcon={<HowToRegIcon />} type="submit" sx={{ width: "50%", alignSelf: "center", textTransform: "none" }} variant='outlined'>Signup</Button>
             <SnackbarComponent showSnackBar={showSnackBar} setShowSnackBar={setShowSnackBar} snackMessage="User added successfully" />
         </RegistrationWrapper>
     )

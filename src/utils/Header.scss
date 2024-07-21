@@ -1,0 +1,15 @@
+.MuiToolbar-regular {
+    background: rgb(0, 75, 140);
+    display: flex;
+    justify-content: center;
+
+    & .welcome-text {
+        font-size: 25px;
+        font-weight: 600;
+        text-align: center !important;
+        justify-self: center;
+        align-self: center;
+        position:relative;
+        left:26%;
+    }
+}

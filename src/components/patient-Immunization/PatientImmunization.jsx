@@ -8,10 +8,14 @@ const PatientMedication = () => {
         general_vaccines: '',
     })
 
+    const handleChange = () => {
+
+    };
+
     return (
         <FormWrapper>
-            <TextField fullWidth type="text" name="covid_19_vaccine" value={user.covid_19_vaccine} placeholder="Enter COVID-19 vaccine" label="COVID-19 vaccine" onChange={handleChange} />
-            <TextField fullWidth type="text" name="general_vaccines" value={user.general_vaccines} placeholder="Enter General Vaccine" label="General Vaccine" onChange={handleChange} />
+            <TextField fullWidth type="text" name="covid_19_vaccine" value={immunizationData.covid_19_vaccine} placeholder="Enter COVID-19 vaccine" label="COVID-19 vaccine" onChange={handleChange} />
+            <TextField fullWidth type="text" name="general_vaccines" value={immunizationData.general_vaccines} placeholder="Enter General Vaccine" label="General Vaccine" onChange={handleChange} />
             <Button type="submit">Save</Button>
         </FormWrapper>
     )
