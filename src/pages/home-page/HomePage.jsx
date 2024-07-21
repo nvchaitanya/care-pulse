@@ -2,7 +2,7 @@ import { Outlet, useLocation } from "react-router-dom"
 import Header from '../../utils/Header.tsx';
 import Leftnav from "../../utils/Leftnav.tsx"
 import Footer from '../../utils/Footer.tsx';
-import PhysicianDashboard from "../../physcian/PhysicianDashboard.js";
+import PhysicianDashboard from "../../physician/PhysicianDashboard.js";
 
 const Home = () => {
     const location = useLocation();

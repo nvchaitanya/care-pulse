@@ -1,9 +1,16 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Modal, Select, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { FormWrapper } from '../common/common.styles.js';
+import axios from 'axios';
 import "./EditAppointment.css"
 
 const EditAppointment = ({ isOpen, handleClose, selectedRecord: record, setSelectedRecord }) => {
+    const [userData, setUserData] = useState({
+        appointmentDate: record.appointmentDate,
+        appointmentTime: record.appointmentTime,
+        referringPhysician: record.referringPhysician
+    })
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -17,12 +24,28 @@ const EditAppointment = ({ isOpen, handleClose, selectedRecord: record, setSelec
     };
 
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        setUserData({
+            ...userData,
+            [e.target.name]: e.target.value
+        })
     };
 
     const handleSave = () => {
-
+        let id = record.id;
+        const { appointmentDate, appointmentTime, referringPhysician } = userData;
+        let data = {
+            appointmentDate: appointmentDate,
+            appointmentTime: appointmentTime,
+            referringPhysician: referringPhysician,
+        }
+        axios.patch(`http://localhost:8080/appointments/${id}`,data)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     };
 
     return (
@@ -33,16 +56,16 @@ const EditAppointment = ({ isOpen, handleClose, selectedRecord: record, setSelec
                 <Typography id="modal-modal-title" variant="h5" component="h2" align="center">
                     Edit Appointment
                 </Typography>
-                <FormWrapper justifyContent="center"  px="10px 10px">
+                <FormWrapper justifyContent="center" px="10px 10px">
                     <TextField className="input-field" type="text" name="patientName" value={record.patientName} label="Patient Name" disabled />
-                    <TextField className="input-field" type="text" name="appointmentDate" value={record.appointmentDate} label="Appointment Date" onChange={handleChange} />
-                    <TextField className="input-field" type="text" name="appointmentTime" value={record.appointmentTime} label="Appointment Time" onChange={handleChange} />
+                    <TextField className="input-field" type="text" name="appointmentDate" value={userData.appointmentDate} label="Appointment Date" onChange={handleChange} />
+                    <TextField className="input-field" type="text" name="appointmentTime" value={userData.appointmentTime} label="Appointment Time" onChange={handleChange} />
                     <FormControl className="input-field">
                         <InputLabel id="referring-physician">Referring Physician</InputLabel>
                         <Select
                             labelId="referring-physician"
                             name="referringPhysician"
-                            value={record.referringPhysician}
+                            value={userData.referringPhysician}
                             label="Referring Physician"
                             onChange={handleChange}
                         >
