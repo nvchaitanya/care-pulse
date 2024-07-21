@@ -5,7 +5,7 @@ import Footer from '../../utils/Footer.tsx';
 import PhysicianDashboard from "../../physician/PhysicianDashboard.js";
 
 const Home = () => {
-    const location = useLocation()
+    const location = useLocation();
     return (
         <>
             <Header />

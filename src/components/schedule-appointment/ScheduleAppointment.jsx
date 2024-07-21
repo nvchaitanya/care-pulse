@@ -21,6 +21,7 @@ function ScheduleAppointment() {
   const { categoriesList } = useSelector(state => state.categoriesState)
   const { userList, loggedInUser } = useSelector(state => state.loginState)
   const [physicianList, setPhysicianList] = useState([])
+  const [minTime, setMinTime] = useState(dayjs().hour(9).minute(0))
   const [isSubmitClicked, setIsSubmitClicked] = useState(false);
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
 
@@ -28,8 +29,8 @@ function ScheduleAppointment() {
     specialization: "",
     physicianName: "",
     appointmentType: "online",
-    appointmentDate: "",
-    appointmentTime: ""
+    appointmentDate: null,
+    appointmentTime: null
   })
 
   const { specialization, physicianName, appointmentType, appointmentDate, appointmentTime } = appointmentForm
@@ -45,6 +46,15 @@ function ScheduleAppointment() {
   }, [])
 
   useEffect(() => {
+    console.log(dayjs(appointmentDate).isSame(dayjs(), "day"))
+    if (dayjs(appointmentDate).isSame(dayjs(), "day")) {
+      setMinTime(dayjs())
+    } else {
+      setMinTime(dayjs(appointmentDate).hour(9).minute(0))
+    }
+  }, [appointmentDate])
+
+  useEffect(() => {
     getPhysicianList(appointmentForm.specialization);
   }, [appointmentForm.specialization])
 
@@ -55,11 +65,22 @@ function ScheduleAppointment() {
     })
   }
 
-  useEffect(() => {
-    console.log("This is the Appointment type ", appointmentForm)
-  }, [appointmentDate, appointmentTime])
-
   const [isError, setIsError] = useState(false);
+
+  const handleReset = () => {
+    setAppointmentForm({
+      specialization: "",
+      physicianName: "",
+      appointmentType: "online",
+      appointmentDate: null,
+      appointmentTime: null
+    })
+    setIsSubmitClicked(false)
+  };
+
+  useEffect(() => {
+    console.log("LoggedInuser details", loggedInUser)
+  }, [loggedInUser])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -70,15 +91,16 @@ function ScheduleAppointment() {
         patientName: loggedInUser && loggedInUser?.name,
         appointmentType: appointmentType,
         physician: physicianName,
-        appointmentDate: appointmentDate,
-        appointmentTime: appointmentTime,
+        appointmentDate: dayjs(appointmentDate).format("DD/MM/YYYY"),
+        appointmentTime: dayjs(appointmentTime).format("HH:mm"),
         attendingPhysician: physicianName,
-        isConsultationDone: "N",
+        consultationStatus: "Pending",
         referringPhysician: "NA"
       }
       axios.post("http://localhost:8080/appointments", { ...reqBody })
         .then((res) => {
-          setIsSubmitSuccess(true)
+          setIsSubmitSuccess(true);
+          handleReset();
         })
         .catch(error => {
           console.log("Error from the POST API", error)
@@ -89,12 +111,14 @@ function ScheduleAppointment() {
     }
   }
 
+
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className='appointment-wrapper'>
         <Typography variant="h4" align='center' mb={3}>Book an appointment</Typography>
         <form onSubmit={handleSubmit}>
-          <div className='fields-wrapper'>
+          <div className='fields-wrapper '>
             <FormControl className='input-field'>
               <InputLabel id="specialization-label">Specialization</InputLabel>
               <Select
@@ -137,20 +161,24 @@ function ScheduleAppointment() {
 
             <FormControl className='input-field'>
               <DatePicker
-                className={` ${(isSubmitClicked && !appointmentDate) ? "has-error" : ""}`}
                 label="Appointment Date"
                 format='DD/MM/YYYY'
                 views={["month", "day"]}
+                value={appointmentDate}
+                slotProps={{
+                  textField: {
+                    helperText: (isSubmitClicked && !appointmentDate) ? "Please select Appointment date" : "",
+                    error: (isSubmitClicked && !appointmentDate),
+                    placeholder: appointmentDate ? "Please Select date" : ""
+                  },
+                }}
                 minDate={dayjs(new Date())}
                 isRequired
                 onChange={(dateValue) => {
-                  const formattedDate = dayjs(dateValue).format("DD/MM/YYYY")
-                  console.log("Different Date Forms", Date(formattedDate), dayjs(new Date().getTime()))
-                  console.log("formatted date", formattedDate)
+                  const formattedDate = dayjs(dateValue)
                   setAppointmentForm({ ...appointmentForm, appointmentDate: formattedDate })
                 }}
               />
-              {(isSubmitClicked && !appointmentDate) && <HelperText>Please select Appointment date</HelperText>}
             </FormControl>
 
             <FormControl className='input-field'>
@@ -158,10 +186,12 @@ function ScheduleAppointment() {
                 className={` ${(isSubmitClicked && !appointmentTime) ? "has-error" : ""}`}
                 label="Appointment Time"
                 isRequired
-                minTime={dayjs()}
+                ampm={false}
+                minTime={minTime}
+                maxTime={dayjs(appointmentDate).hour(20).minute(0)}
+                value={appointmentTime}
                 onChange={(timeValue) => {
-                  console.log(dayjs().hour())
-                  const formattedTime = dayjs(timeValue).format("HH:mm")
+                  const formattedTime = dayjs(timeValue)
                   setAppointmentForm({ ...appointmentForm, appointmentTime: formattedTime })
                 }}
               />

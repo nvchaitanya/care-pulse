@@ -52,6 +52,7 @@ const LoginPage = () => {
         console.log(error);
         const { userList } = userState;
         const enteredUser = userList.find(ele => ele.userId === userId)
+        console.log("Lets find the data",enteredUser, userList)
         if (!error) {
             dispatch(loginAction.login())
             dispatch(loginAction.getLoggedInUser({ name: enteredUser.displayName }))
