@@ -10,6 +10,8 @@ import PatientImmunization from "./components/patient-Immunization/PatientImmuni
 import PatientMedication from "./components/patient-Medication&Allergies/PatientMedication";
 import ScheduleAppointment from "./components/schedule-appointment/ScheduleAppointment";
 import { getUser } from "./redux/login-flow/LoginRedux";
+import PatientProfile from "./components/patient-profile/PatientProfile";
+import BillingPage from "./components/patient-billing/BillingPage";
 
 
 const MainContainer = () => {
@@ -31,6 +33,8 @@ const MainContainer = () => {
                     <Route path="patient-immunization" element={<PatientImmunization />} />
                     <Route path="patient-medication" element={<PatientMedication />} />
                     <Route path="schedule-appointment" element={<ScheduleAppointment />} />
+                    <Route path="profile" element={<PatientProfile />}/>
+                    <Route path="billing" element={<BillingPage />}/>
                 </Route>
             </Route>
         </Routes>

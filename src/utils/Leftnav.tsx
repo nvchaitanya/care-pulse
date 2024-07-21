@@ -39,7 +39,7 @@ const personalModules = [
     name: "Billing"
   },
   {
-    route: "proile",
+    route: "profile",
     name: "Profile"
   }
 ]
