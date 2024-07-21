@@ -9,6 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const drawerWidth = 250;
 const modules = [
@@ -33,6 +34,17 @@ const modules = [
   //   name: "Patient Vitals"
   // },
 ]
+
+const physicianModules = [
+  {
+    route: "/",
+    name: "Dashboard"
+  },
+  {
+    route: "/profile",
+    name: "Profile"
+  }
+]
 const personalModules = [
   {
     route: "billing",
@@ -45,6 +57,10 @@ const personalModules = [
 ]
 
 export default function PermanentDrawerLeft() {
+
+  const { loggedInUser } = useSelector((state: any) => state.loginState)
+  let moduleData = loggedInUser.role === "patient" ? modules : physicianModules
+
   const navigate = useNavigate()
   const navRouting = (module: { route: string, name: string }) => {
     navigate(module.route)
@@ -65,7 +81,7 @@ export default function PermanentDrawerLeft() {
       >
         <Divider />
         <List>
-          {modules.map((ele, index) => (
+          {moduleData.map((ele, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton onClick={() => navRouting(ele)}>
                 <ListItemText primary={ele.name} />
@@ -75,7 +91,7 @@ export default function PermanentDrawerLeft() {
         </List>
         <Divider />
         <List>
-          {personalModules.map((ele, index) => (
+          {loggedInUser.role === "patient" && personalModules.map((ele, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton onClick={() => navRouting(ele)}>
                 <ListItemText primary={ele.name} />
