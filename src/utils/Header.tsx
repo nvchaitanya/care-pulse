@@ -193,15 +193,6 @@ const Header = () => {
           >
             Patient - Physician Portal
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
           <Box sx={{ flexGrow: 1 }} />
           {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
