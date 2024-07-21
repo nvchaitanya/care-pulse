@@ -64,6 +64,8 @@ const RegistrationPage = ({ setIsRegistered }) => {
     }
 
     const reqBody = {
+        firstname,
+        lastname,
         name: `${firstname} ${lastname}`,
         displayName: firstname,
         gender: gender,
@@ -74,7 +76,9 @@ const RegistrationPage = ({ setIsRegistered }) => {
         role,
         specialization
     }
+
     const createUserId = (email) => {
+      
         reqBody["userId"] = email.split("@")[0]
     }
     const registerUser = (e) => {
@@ -86,7 +90,6 @@ const RegistrationPage = ({ setIsRegistered }) => {
             setIsRegistered(true)
             setShowSnackBar(true)
         }
-
     }
 
     return (
