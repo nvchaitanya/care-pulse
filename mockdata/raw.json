@@ -1,0 +1,411 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "firstname": "Nistala",
+        "lastname": "Chaitanya",
+        "gender": "male",
+        "email": "chaitanya@gmail.com",
+        "password": 12345,
+        "retypePassword": 12345,
+        "dob": "683078400",
+        "role": "patient",
+        "isRegistered": true,
+        "mobile": 7845122356,
+        "specialization": null,
+        "experience": "only for physician",
+        "isLogged": false,
+        "registrationDate": "2021-11-22T04:49:05.226Z",
+        "isApproved": false
+      },
+      {
+        "email": "testadmin@test.com",
+        "password": "$2a$10$ExH8Wh8lqMB7OeQkrZ68m.GBnyBVnwUNSwAoDrq2V9Ia7eb3EuVr2",
+        "firstname": "Test",
+        "lastname": "Account",
+        "gender": "Male",
+        "retypePassword": "test123",
+        "dob": "1996-01-12",
+        "role": "Admin",
+        "isRegistered": false,
+        "mobile": "7418529630",
+        "specialization": null,
+        "experience": null,
+        "isLogged": false,
+        "registrationDate": "2021-11-24T06:06:42.838Z",
+        "isApproved": true,
+        "id": 2
+      },
+      {
+        "email": "chaitanyaNistala@gmail.com",
+        "password": "$2a$10$fF0vuGwkAv7pgVpIKu3RKOdMMAvF75c/5GEW.aiJ..gSruNU3j5eq",
+        "firstname": "NISTALA",
+        "lastname": "VENKATA CHAITANYA",
+        "gender": "Male",
+        "retypePassword": "chaitanya123",
+        "dob": "1992-08-25",
+        "role": "Admin",
+        "isRegistered": false,
+        "mobile": "7997011244",
+        "specialization": null,
+        "experience": null,
+        "isLogged": false,
+        "registrationDate": "2021-11-24T06:15:18.611Z",
+        "isApproved": true,
+        "id": 4
+      },
+      {
+        "email": "Pankaj.Gotefode@citiustech.com",
+        "password": "$2a$10$raMPwCR3I1Sti2tg2v3pGeYrkFEarcFD6GRrNaMUMPaGy0nsKtRkO",
+        "firstname": "Pankaj",
+        "lastname": "Gotefode",
+        "gender": "Male",
+        "retypePassword": "1234567890",
+        "dob": "2008-08-13",
+        "role": "Patient",
+        "isRegistered": true,
+        "mobile": "8877654543",
+        "specialization": null,
+        "experience": null,
+        "isLogged": false,
+        "registrationDate": "2021-11-24T03:22:17.191Z",
+        "isApproved": true,
+        "id": 5
+      },
+      {
+        "email": "testphysician@test.com",
+        "password": "$2a$10$BJMTPSn3N847UrXMZp0Zi.juhXGZ.jir5NDl2cG2EW/R.U26yEKnC",
+        "firstname": "Test ",
+        "lastname": "Physcian",
+        "gender": "Male",
+        "retypePassword": "test123",
+        "dob": "1985-02-01",
+        "role": "Physician",
+        "isRegistered": false,
+        "mobile": "7895263100",
+        "specialization": "Cardiology",
+        "experience": "5",
+        "isLogged": false,
+        "registrationDate": "2021-11-24T10:35:03.385Z",
+        "isApproved": false,
+        "id": 6
+      },
+      {
+        "email": "testpatient@test.com",
+        "password": "$2a$10$7EdoY1huo1u0q4IOGh7Mte9Y51llsV.FAgfTyuNJZyiUrYynrUI0q",
+        "firstname": "Test ",
+        "lastname": "Accont",
+        "gender": "Male",
+        "retypePassword": "test123",
+        "dob": "1991-02-01",
+        "role": "Patient",
+        "isRegistered": false,
+        "mobile": "9638527410",
+        "specialization": null,
+        "experience": null,
+        "isLogged": false,
+        "registrationDate": "2021-11-24T12:37:21.395Z",
+        "isApproved": false,
+        "id": 7
+      },
+      {
+        "email": "siddhumithra@gmail.com",
+        "password": "$2a$10$RmwcPBS.NjVfRotSptgqXuorCODrAk2TNLkxUDCoYWeGG/G0if.X6",
+        "firstname": "Siddhartha",
+        "lastname": "N",
+        "gender": "Male",
+        "retypePassword": "sid123",
+        "dob": "1997-07-01",
+        "role": "Patient",
+        "isRegistered": false,
+        "mobile": "9743854486",
+        "specialization": null,
+        "experience": null,
+        "isLogged": false,
+        "registrationDate": "2021-11-25T06:10:46.151Z",
+        "isApproved": false,
+        "id": 8
+      },
+      {
+        "email": "testdemo@test.com",
+        "password": "$2a$10$pnVfCVbrcudNhSQ2ez//WuqMD.AMbwbII9686zoVIZc/9gzS.BrAW",
+        "firstname": "Nistala",
+        "lastname": "Venkata Chaitanya",
+        "gender": "Male",
+        "retypePassword": "test123",
+        "dob": "1992-08-25",
+        "role": "Patient",
+        "isRegistered": false,
+        "mobile": "7896541230",
+        "specialization": null,
+        "experience": null,
+        "isLogged": false,
+        "registrationDate": "2021-11-25T09:59:04.927Z",
+        "isApproved": false,
+        "id": 9
+      }
+    ],
+    "patientProfile": [
+      {
+        "id": 1,
+        "firstname": "Nistala",
+        "lastname": "Chatanya",
+        "gender": "male",
+        "ethnicity": "dropdown menu",
+        "education": "dropdown menu",
+        "employment": "dropdown menu",
+        "dob": "683078400",
+        "employmenyt": null,
+        "address": null,
+        "mobile": 7845122356,
+        "avatar": null
+      }
+    ],
+    "patientDemographics": [
+      {
+        "id": 1,
+        "medicalHistory": "",
+        "familyMedicalHistory": "",
+        "surgeries": "",
+        "insuranceProvider": null
+      }
+    ],
+    "patientAppointments": [
+      {
+        "id": 1,
+        "patientId": "UUID of patient",
+        "patientName": "Chaitanya",
+        "physicianId": "UUID of physician",
+        "physicianName": "",
+        "appointmentId": "Initially null, once TX is done success, it will be generated(nano Id)",
+        "specilization": "",
+        "dateOfAppointment": "",
+        "time": "",
+        "status": "need to changed to booked once done",
+        "notes": "Obtained from the physician"
+      }
+    ],
+    "medicationAndAllergies": [
+      {
+        "id": 1,
+        "currentMedication": "Need to enter by Physician",
+        "OTC": "",
+        "healthProducts": "",
+        "socialDrugs": "",
+        "pastMedication": "",
+        "drugs": "",
+        "allergiesReaction": ""
+      }
+    ],
+    "patientImmunization": [
+      {
+        "id": 1,
+        "COVID-19Vaccine": "",
+        "dose": "",
+        "VaccineDate": "",
+        "otherVaccnes": ""
+      }
+    ],
+    "patientVitals": [
+      {
+        "id": 1,
+        "bloodPressure": "",
+        "respiration": "",
+        "height": "",
+        "weight": "",
+        "temperature": "",
+        "pulse": "",
+        "sugarLevel": ""
+      }
+    ],
+    "patientBilling": [
+      {
+        "userId": 1,
+        "uuid": "",
+        "billingAmount": "",
+        "bllingStatus": false,
+        "transactionId": null
+      }
+    ],
+    "physicianProfile": [
+      {
+        "id": 1,
+        "uuid": "",
+        "firstname": "Nistala",
+        "lastname": "Chatanya",
+        "gender": "male",
+        "mobile": 7845122356,
+        "specilization": "",
+        "experience": 12,
+        "avatar": null
+      }
+    ],
+    "physicianNotes": [
+      {
+        "notes": ""
+      }
+    ],
+    "adminProfile": [
+      {
+        "id": 1,
+        "firstname": "Nistala",
+        "lastname": "Chatanya",
+        "gender": "male",
+        "mobile": 7845122356
+      }
+    ],
+    "lookups": [
+      {
+        "id": 1,
+        "name": "Anatomical Pathology"
+      },
+      {
+        "id": 2,
+        "name": "Anesthesiology"
+      },
+      {
+        "id": 3,
+        "name": "Cardiology"
+      },
+      {
+        "id": 4,
+        "name": "Cardiovascular/Thoracic Surgery"
+      },
+      {
+        "id": 5,
+        "name": "Clinical Immunology/Allergy"
+      },
+      {
+        "id": 6,
+        "name": "Critical Care Medicine"
+      },
+      {
+        "id": 7,
+        "name": "Dermatology"
+      },
+      {
+        "id": 8,
+        "name": "Diagnostic Radiology"
+      },
+      {
+        "id": 9,
+        "name": "Emergency Medicine"
+      },
+      {
+        "id": 10,
+        "name": "Endocrinology and Metabolism"
+      },
+      {
+        "id": 11,
+        "name": "Gastroenterology"
+      },
+      {
+        "id": 12,
+        "name": "General Internal Medicine"
+      },
+      {
+        "id": 13,
+        "name": "General/Clinical Pathology"
+      },
+      {
+        "id": 14,
+        "name": "General Surgery"
+      },
+      {
+        "id": 15,
+        "name": "Geriatric Medicine"
+      },
+      {
+        "id": 16,
+        "name": "Hematology"
+      },
+      {
+        "id": 17,
+        "name": "Medical Biochemistry"
+      },
+      {
+        "id": 18,
+        "name": "Medical Genetics"
+      },
+      {
+        "id": 19,
+        "name": "Medical Microbiology and Infectious Diseases"
+      },
+      {
+        "id": 20,
+        "name": "Medical Oncology"
+      },
+      {
+        "id": 21,
+        "name": "Nephrology"
+      },
+      {
+        "id": 22,
+        "name": "Neurology"
+      },
+      {
+        "id": 23,
+        "name": "Neurosurgery"
+      },
+      {
+        "id": 24,
+        "name": "Nuclear Medicine"
+      },
+      {
+        "id": 25,
+        "name": "Obstetrics/Gynecology"
+      },
+      {
+        "id": 26,
+        "name": "Occupational Medicine"
+      },
+      {
+        "id": 27,
+        "name": "Ophthalmology"
+      },
+      {
+        "id": 28,
+        "name": "Orthopedic Surgery"
+      },
+      {
+        "id": 29,
+        "name": "Otolaryngology"
+      },
+      {
+        "id": 30,
+        "name": "Pediatrics"
+      },
+      {
+        "id": 31,
+        "name": "Physical Medicine and Rehabilitation (PM & R)"
+      },
+      {
+        "id": 32,
+        "name": "Plastic Surgery"
+      },
+      {
+        "id": 33,
+        "name": "Psychiatry"
+      },
+      {
+        "id": 34,
+        "name": "Rheumatology"
+      },
+      {
+        "id": 35,
+        "name": "Respirology"
+      },
+      {
+        "id": 36,
+        "name": "Radiation Oncology"
+      },
+      {
+        "id": 37,
+        "name": "Public Health and Preventive Medicine (PhPm)"
+      },
+      {
+        "id": 38,
+        "name": "Others"
+      }
+    ]
+  }
