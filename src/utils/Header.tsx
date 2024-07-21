@@ -9,8 +9,6 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -18,7 +16,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import Leftnav from './Leftnav.tsx';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { loginAction } from '../redux/login-flow/LoginRedux.js';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import "./Header.scss";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,6 +60,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = () => {
+  const { loggedInUser } = useSelector((state: any) => state.loginState)
+  console.log("This is the user data", loggedInUser);
   const [open, setOpen]: [any, any] = React.useState(false);
   const dispatch = useDispatch();
 
@@ -174,17 +175,8 @@ const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
+        <Toolbar sx={{ display: "flex", justifyContent: "center" }}>
+
           <Typography
             variant="h6"
             noWrap
@@ -193,6 +185,9 @@ const Header = () => {
           >
             Patient - Physician Portal
           </Typography>
+
+          <div className="welcome-text">Welcome {loggedInUser.name} </div>
+
           <Box sx={{ flexGrow: 1 }} />
           {/* <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
@@ -207,7 +202,7 @@ const Header = () => {
               <AccountCircle />
             </IconButton>
           </Box> */}
-          <Typography onClick={() => dispatch(loginAction.logout())}>Logout <LogoutIcon sx={{ marginLeft: '5px', fontSize: '20px' }} /></Typography>
+          <Typography sx={{cursor:"pointer"}} onClick={() => dispatch(loginAction.logout())}>Logout <LogoutIcon sx={{ marginLeft: '5px', fontSize: '20px' }} /></Typography>
 
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

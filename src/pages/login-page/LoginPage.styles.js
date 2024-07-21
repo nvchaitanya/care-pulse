@@ -2,13 +2,16 @@ import styled from "styled-components";
 
 export const LoginWrapper = styled.div`
     display:flex;
-    flex-direction: column;
+    // flex-direction: column;
     min-height:100vh;
     justify-content:center;
-    background:rgba(61,171,240,0.1);
+    // background:rgba(61,171,240,0.1);
     align-items:center;
+    background-image:url(/healthcare-bg-image.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
     `
-    export const LoginForm = styled.form`
+export const LoginForm = styled.form`
     display: flex;
     flex-direction:column;
     align-items:center;
@@ -17,6 +20,10 @@ export const LoginWrapper = styled.div`
     border:1px solid rgba(255,255,255,0.3);
     padding:50px 0;
     border-radius:10px;
+`
+
+export const LoginImageWrapper = styled.div`
+    border: 1px solid red;
 `
 // export const InputWrapper = styled.div`
 //     display:flex;

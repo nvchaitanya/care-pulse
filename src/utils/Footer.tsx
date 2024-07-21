@@ -4,7 +4,7 @@ import { Facebook, Twitter, LinkedIn } from '@mui/icons-material';
 
 const Footer: React.FC = () => {
   return (
-    <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'white', py: 2, marginTop: "auto" }}>
+    <Box component="footer" sx={{ bgcolor: 'rgb(0,75,140)', color: 'white', py: 2, marginTop: "auto" }}>
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems={"center"} justifyContent={"flex-end"}>
           <Grid item xs={12} sm={4}>
