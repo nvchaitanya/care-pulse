@@ -1,15 +1,41 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Modal, Select, Stack, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormWrapper } from '../common/common.styles.js';
 import axios from 'axios';
-import "./EditAppointment.css"
+import "./EditAppointment.css";
+import { DatePicker, LocalizationProvider, TimePicker } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
 
-const EditAppointment = ({ isOpen, handleClose, selectedRecord: record, setSelectedRecord }) => {
+
+const EditAppointment = ({ isOpen, handleClose, selectedRecord: record }) => {
     const [userData, setUserData] = useState({
-        appointmentDate: record.appointmentDate,
-        appointmentTime: record.appointmentTime,
-        referringPhysician: record.referringPhysician
+        appointmentDate: "",
+        appointmentTime: "",
+        referringPhysician: ""
     })
+
+    const { appointmentDate, appointmentTime } = userData
+    const [minTime, setMinTime] = useState(dayjs().hour(9).minute(0))
+    const [isSaveClicked, setIsSaveClicked] = useState(false)
+
+    useEffect(() => {
+        console.log("Record date", record, dayjs("15:25", "HH:mm"))
+        setUserData({
+            appointmentDate: dayjs(record.appointmentDate, "DD/MM/YYYY"),
+            appointmentTime: dayjs(record.appointmentTime, "HH:mm"),
+            referringPhysician: record.referringPhysician
+        })
+    }, [record])
+
+    useEffect(() => {
+        console.log(dayjs(appointmentDate,"DD/MM/YYYY").isSame(dayjs(), "day"))
+        if (dayjs(appointmentDate).isSame(dayjs(), "day")) {
+          setMinTime(dayjs())
+        } else {
+          setMinTime(dayjs(appointmentDate).hour(9).minute(0))
+        }
+      }, [appointmentDate])
 
     const style = {
         position: 'absolute',
@@ -34,12 +60,13 @@ const EditAppointment = ({ isOpen, handleClose, selectedRecord: record, setSelec
     const handleSave = () => {
         let id = record.id;
         const { appointmentDate, appointmentTime, referringPhysician } = userData;
+        setIsSaveClicked(true)
         let data = {
             appointmentDate: appointmentDate,
             appointmentTime: appointmentTime,
             referringPhysician: referringPhysician,
         }
-        axios.patch(`http://localhost:8080/appointments/${id}`,data)
+        axios.patch(`http://localhost:8080/appointments/${id}`, data)
             .then(response => {
                 console.log(response.data)
             })
@@ -49,38 +76,80 @@ const EditAppointment = ({ isOpen, handleClose, selectedRecord: record, setSelec
     };
 
     return (
-        <Modal
-            open={isOpen}
-        >
-            <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h5" component="h2" align="center">
-                    Edit Appointment
-                </Typography>
-                <FormWrapper justifyContent="center" px="10px 10px">
-                    <TextField className="input-field" type="text" name="patientName" value={record.patientName} label="Patient Name" disabled />
-                    <TextField className="input-field" type="text" name="appointmentDate" value={userData.appointmentDate} label="Appointment Date" onChange={handleChange} />
-                    <TextField className="input-field" type="text" name="appointmentTime" value={userData.appointmentTime} label="Appointment Time" onChange={handleChange} />
-                    <FormControl className="input-field">
-                        <InputLabel id="referring-physician">Referring Physician</InputLabel>
-                        <Select
-                            labelId="referring-physician"
-                            name="referringPhysician"
-                            value={userData.referringPhysician}
-                            label="Referring Physician"
-                            onChange={handleChange}
-                        >
-                            <MenuItem value="male">Male</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField className="input-field" type="text" name="appointmentType" label="Appointment Type" value={record.appointmentType} disabled />
-                    <TextField className="input-field" type="text" name="consultationStatus" value={record.consultationStatus} label="Consultation Status" disabled />
-                </FormWrapper>
-                <Stack flexDirection="row" justifyContent="space-between" px="15px" mt="20px">
-                    <Button variant="outlined" onClick={handleSave}>Save</Button>
-                    <Button variant="text" onClick={handleClose}>Close</Button>
-                </Stack>
-            </Box>
-        </Modal>
+
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <Modal
+                open={isOpen}
+            >
+                <Box sx={style}>
+                    <Typography id="modal-modal-title" variant="h5" component="h2" align="center">
+                        Edit Appointment
+                    </Typography>
+                    <FormWrapper justifyContent="center" px="10px 10px">
+                        <TextField className="input-field" type="text" name="patientName" value={record.patientName} label="Patient Name" disabled />
+                        <DatePicker
+                            label="Appointment Date"
+                            className='input-field'
+                            format='DD/MM/YYYY'
+                            views={["month", "day"]}
+                            value={userData.appointmentDate}
+                            slotProps={{
+                                textField: {
+                                    helperText: (isSaveClicked && !appointmentDate) ? "Please select Appointment date" : "",
+                                    error: (isSaveClicked && !appointmentDate)
+                                },
+                            }}
+                            minDate={dayjs(new Date())}
+                            isRequired
+                            onChange={(dateValue) => {
+                                const formattedDate = dayjs(dateValue)
+                                setUserData({ ...userData, appointmentDate: formattedDate })
+                            }}
+                        />
+
+                        <TimePicker
+                            className='input-field'
+                            label="Appointment Time"
+                            format='HH:mm'
+                            ampm={false}
+                            minTime={minTime}
+                            maxTime={dayjs().hour(18).minute(0)}
+                            value={userData.appointmentTime}
+                            slotProps={{
+                                textField: {
+                                    helperText: (isSaveClicked && !appointmentTime) ? "Please select Appointment date" : "",
+                                    error: (isSaveClicked && !appointmentTime)
+                                },
+                            }}
+                            minDate={dayjs(new Date())}
+                            isRequired
+                            onChange={(dateValue) => {
+                                const formattedDate = dayjs(dateValue)
+                                setUserData({ ...userData, appointmentTime: formattedDate })
+                            }}
+                        />
+                        <FormControl className="input-field">
+                            <InputLabel id="referring-physician">Referring Physician</InputLabel>
+                            <Select
+                                labelId="referring-physician"
+                                name="referringPhysician"
+                                value={userData.referringPhysician}
+                                label="Referring Physician"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value="male">Male</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <TextField className="input-field" type="text" name="appointmentType" label="Appointment Type" value={record.appointmentType} disabled />
+                        <TextField className="input-field" type="text" name="consultationStatus" value={record.consultationStatus} label="Consultation Status" disabled />
+                    </FormWrapper>
+                    <Stack flexDirection="row" justifyContent="space-between" px="15px" mt="20px">
+                        <Button variant="outlined" onClick={handleSave}>Save</Button>
+                        <Button variant="text" onClick={handleClose}>Close</Button>
+                    </Stack>
+                </Box>
+            </Modal>
+        </LocalizationProvider>
     )
 };
 export default EditAppointment;

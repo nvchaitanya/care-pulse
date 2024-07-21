@@ -80,7 +80,23 @@ const PhysicianDashboard = () => {
 
     const handleDeleteClose = () => {
         setIsDeleteOpen(false)
-    }
+    };
+
+    const confirmDelete = (id) => {
+        axios.delete(`http://localhost:8080/appointments/${id}`)
+            .then(response => {
+                console.log(response.data, response.data.length);
+                setIsDeleteOpen(false);
+                axios.get("http://localhost:8080/appointments")
+                    .then(response => {
+                        setAppointmentData(response.data);
+                        setFilteredData(response.data);
+                    })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    };
 
     const items = [
         {
@@ -182,13 +198,12 @@ const PhysicianDashboard = () => {
                 isOpen={isEditOpen}
                 handleClose={handleEditClose}
                 selectedRecord={selectedRecord}
-                setSelectedRecord={setSelectedRecord}
             />
             <DeleteAppointment
                 isOpen={isDeleteOpen}
                 handleClose={handleDeleteClose}
-                setIsDeleteOpen={setIsDeleteOpen}
                 id={selectedRecordId}
+                confirmDelete={confirmDelete}
             />
             <EditMedicationReport
                 isOpen={isReportOpen}

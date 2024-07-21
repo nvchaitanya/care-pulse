@@ -1,8 +1,7 @@
 import { Box, Button, Modal, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-const DeleteAppointment = ({ isOpen, handleClose, setIsDeleteOpen, id }) => {
+const DeleteAppointment = ({ isOpen, handleClose, id, confirmDelete }) => {
     const style = {
         position: 'absolute',
         top: '50%',
@@ -14,17 +13,6 @@ const DeleteAppointment = ({ isOpen, handleClose, setIsDeleteOpen, id }) => {
         p: 4,
     };
 
-    const confirmDelete = (id) => {
-        axios.delete(`http://localhost:8080/appointments/${id}`)
-            .then(response => {
-                console.log(response.data, response.data.length);
-                setIsDeleteOpen(false);
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-
     return (
         <Modal
             open={isOpen}
@@ -34,7 +22,7 @@ const DeleteAppointment = ({ isOpen, handleClose, setIsDeleteOpen, id }) => {
                     Are you sure you want to Delete this Record?
                 </Typography>
                 <Stack flexDirection="row" justifyContent="space-between">
-                    <Button variant="outlined" onClick={confirmDelete}>Confirm</Button>
+                    <Button variant="outlined" onClick={() => confirmDelete(id)}>Confirm</Button>
                     <Button variant="text" onClick={handleClose}>Close</Button>
                 </Stack>
             </Box>
