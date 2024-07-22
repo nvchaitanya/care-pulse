@@ -55,7 +55,7 @@ const LoginPage = () => {
         console.log("Lets find the data", enteredUser, userList)
         if (!error) {
             dispatch(loginAction.login())
-            dispatch(loginAction.getLoggedInUser({ name: enteredUser.displayName, role: enteredUser.role }))
+            dispatch(loginAction.getLoggedInUser({ name: enteredUser.displayName,...enteredUser }))
             navigate("/", { state: { userId: userId } })
         } else {
             alert(error)

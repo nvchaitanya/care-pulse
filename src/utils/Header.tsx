@@ -183,7 +183,7 @@ const Header = () => {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Patient - Physician Portal
+            Care-Pulse portal
           </Typography>
 
           <div className="welcome-text">Welcome {loggedInUser.name} </div>
